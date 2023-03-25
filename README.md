@@ -1,5 +1,6 @@
 # l2h
 1. Просмотрите историю коммитов в своём проекте и выберите три случайных коммита. Просмотрите изменения, которые были в них сделаны.
+```
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git log --oneline
 9cd423c (HEAD -> main, origin/main, origin/HEAD) Merge pull request #1 from Fostix/gitlesson
 3113345 resolved conflict
@@ -96,15 +97,16 @@ ea41fca Lombok logging
 41a30d3 Auto generate constructor lombok
 83bd9bb lombok itself generate methods use build annotation for make code cleaner
 4093ac9 created project
-
-
+```
+```
 git diff dab0081
 git diff d58c442
 git diff 48cb96b
-Там много изменений
+```
+- Там много изменений
 
 2. Верните эти изменения командой git revert последовательно, чтобы в итоге получилось тоже три коммита.
-
+```
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git revert dab0081
 Auto-merging src/main/java/learn/springframework/spring6restmvc/controller/BeerController.java
 Auto-merging src/main/java/learn/springframework/spring6restmvc/services/BeerService.java
@@ -114,14 +116,14 @@ Auto-merging src/test/java/learn/springframework/spring6restmvc/controller/BeerC
 Auto-merging src/test/java/learn/springframework/spring6restmvc/controller/BeerControllerTest.java
 [main d0d683e] Revert "added JPA Delete by Id Not Found"
  6 files changed, 6 insertions(+), 22 deletions(-)
-
-
+```
+```
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git revert d58c442
 Auto-merging pom.xml
 [main b3f06b0] Revert "added dependency java bean validation maven dependency"
  1 file changed, 4 deletions(-)
-
-
+```
+```
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git revert 48cb96b
 Auto-merging src/main/java/learn/springframework/spring6restmvc/controller/CustomerErrorController.java
 Auto-merging src/test/java/learn/springframework/spring6restmvc/controller/BeerControllerTest.java
@@ -133,16 +135,16 @@ hint: "git revert --continue".
 hint: You can instead skip this commit with "git revert --skip".
 hint: To abort and get back to the state before "git revert",
 hint: run "git revert --abort".
-
-Resolved the conflict
-
+```
+- Resolved the conflict
+```
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git add .
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git revert --continue 
 [main 09f22f5] Revert "Custom Error Body"
  2 files changed, 3 insertions(+), 17 deletions(-)
-
-new three commits
-
+```
+- new three commits
+```
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git log
 commit 30f2bb94e2684d25f20290483b866cba9081392e (HEAD -> main)
 Author: albert <accretindiskthat@gmail.com>
@@ -167,10 +169,11 @@ Date:   Sat Mar 25 11:34:41 2023 +0500
     Revert "added JPA Delete by Id Not Found"
     
     This reverts commit dab00812cdc4f5cbb1f8bae4e4b5bb86ecd48b60.
-
+```
 
 3. Попробуйте отменить эти три коммита:
 * последний — командами git reset --soft и git restore;
+```
 git reset --soft 30f2bb94e2684d25f20290483b866cba9081392e
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git status
 On branch main
@@ -179,9 +182,11 @@ and have 3 and 49 different commits each, respectively.
   (use "git pull" to merge the remote branch into yours)
 
 nothing to commit, working tree clean
-Ну так последний комит, ничего и не должно было произойти :)
+```
+- Ну так последний комит, ничего и не должно было произойти :)
 
 * предпоследний — командой git reset --mixed и git restore;
+```
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git reset --mixed 4c042dae17a5c629a6c95e3c7aa58f1f9a205a8a
 Unstaged changes after reset:
 M	src/main/java/learn/springframework/spring6restmvc/controller/CustomerErrorController.java
@@ -207,8 +212,9 @@ and have 2 and 49 different commits each, respectively.
   (use "git pull" to merge the remote branch into yours)
 
 nothing to commit, working tree clean
-
+```
 * первый — командой git reset --hard.
+```
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git reset --hard 53ba1e0119177439213479709c6a8d0d66e9d4c4
 HEAD is now at 53ba1e0 Revert "added JPA Delete by Id Not Found"
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git status
@@ -232,5 +238,5 @@ Author: Albert <accretiondiskthat@gmail.com>
 Date:   Sun Mar 12 20:10:35 2023 +0500
 
     Custom Error Body
-
+```
 
