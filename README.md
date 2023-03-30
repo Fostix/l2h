@@ -3,7 +3,7 @@
 ```
 albert@albert-All-Series:~/Documents/l2h/spring-6-rest-mvc-example$ git log --oneline
 9cd423c (HEAD -> main, origin/main, origin/HEAD) Merge pull request #1 from Fostix/gitlesson
-3113345 resolved conflict
+3113345 resolved conflictfg
 a9a5189 Initial commit
 60f8216 Add Sort Parameter
 9cef865 Refactor Spring Data JPA Repositories
